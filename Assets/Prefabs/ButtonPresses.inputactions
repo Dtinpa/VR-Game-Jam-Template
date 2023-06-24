@@ -1,0 +1,54 @@
+{
+    "name": "ButtonPresses",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "e2f5ec94-f783-4130-a129-2b908de90caf",
+            "actions": [
+                {
+                    "name": "Left Hook Anchor",
+                    "type": "Button",
+                    "id": "e23b586b-0697-46f8-a66a-1696d2000a0c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Hook Anchor",
+                    "type": "Button",
+                    "id": "df837d46-4232-43d3-aba9-042b4671224d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6cb2e919-f3ae-460a-a0af-d8fa741277b1",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Hook Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb79abea-faba-4157-bdfb-ba3a1f2f99c2",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Hook Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
