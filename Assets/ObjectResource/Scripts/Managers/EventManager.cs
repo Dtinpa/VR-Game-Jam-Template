@@ -58,11 +58,14 @@ public class EventManager : MonoBehaviour
 
     #region Baby
 
-    public event Action BabyDropped;
-    public void OnBabyDropped() => BabyDropped?.Invoke();
+    public event Action DropBaby;
+    public void OnDropBaby() => DropBaby?.Invoke();
 
-    public event Action BalanceBaby;
-    public void OnBalanceBaby() => BalanceBaby.Invoke();
+    public event Action<float> BalanceBaby;
+    public void OnBalanceBaby(float value) => BalanceBaby.Invoke(value);
+
+    public event Action ResetBalance;
+    public void OnResetBalance() => ResetBalance.Invoke();
 
     #endregion
 
