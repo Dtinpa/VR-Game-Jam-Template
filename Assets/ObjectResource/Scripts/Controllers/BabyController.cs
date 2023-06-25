@@ -7,6 +7,7 @@ public class BabyController : MonoBehaviour
     [SerializeField] GameObject bubble;
     [SerializeField] float bubbleDistanceFromGround = 3f;
     [SerializeField] float rayCastDistance = 100f;
+    [SerializeField] List<string> tagList;
 
     private Rigidbody babyRigidBody;
     private bool babyDropped = false;
@@ -22,6 +23,7 @@ public class BabyController : MonoBehaviour
     public void babyPickedUp()
     {
         babyDropped = false;
+        babyRigidBody.isKinematic = true;
         if (bubble.activeSelf) 
         {
             bubble.SetActive(false);
@@ -32,6 +34,7 @@ public class BabyController : MonoBehaviour
 
     public void babyLetGo()
     {
+        babyRigidBody.isKinematic = false;
         babyDropped = true;
     }
 
@@ -46,7 +49,7 @@ public class BabyController : MonoBehaviour
             babyRigidBody.velocity = Vector3.zero;
             babyRigidBody.angularVelocity = Vector3.zero;
 
-            if (collision.gameObject.tag == "SafeBabyZone")
+            if (tagList.Contains(collision.gameObject.tag))
             {
                 
             }

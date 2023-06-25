@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 286904259}
   - component: {fileID: 286904261}
   - component: {fileID: 286904260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4449570145442522144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4393056253668311236}
   - component: {fileID: 6752347106214494542}
   - component: {fileID: 7806951685366514463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Baby body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 4267187517593018992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4131299059214313083}
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6742030925485574396}
   - component: {fileID: 1226605193279291683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 4529924892178523989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4449570145442522144}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4131299059214313083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4061207566007983215}
   - component: {fileID: 4061207566007983214}
   - component: {fileID: 4061207566007983217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Baby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,3 +502,7 @@ MonoBehaviour:
   bubble: {fileID: 286904258}
   bubbleDistanceFromGround: 3
   rayCastDistance: 100
+  tagList:
+  - SafeBabyZone
+  - Player
+  - DeliveryZone

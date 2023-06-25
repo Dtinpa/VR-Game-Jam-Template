@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3577249660281421832}
   - component: {fileID: 6298470011828321522}
   - component: {fileID: 8485935155128279520}
+  - component: {fileID: 1907565504}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -57,3 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47be3c161a54a8441b98cfbc8ba2cbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoadOnRestart: 2
+--- !u!114 &1907565504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459279327565957548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de29ea8c992044747864018a5260a4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderUI: {fileID: 0}
+  defaultVal: 50
