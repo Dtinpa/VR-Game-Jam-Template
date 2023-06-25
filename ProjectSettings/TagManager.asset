@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Destroyer
   - Enemy
+  - DeliveryZone
   layers:
   - Default
   - TransparentFX
