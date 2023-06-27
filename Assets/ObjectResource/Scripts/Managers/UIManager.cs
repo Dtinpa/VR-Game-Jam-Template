@@ -60,7 +60,11 @@ public class UIManager : MonoBehaviour
 
     public void UnPauseButton()
     {
-        Debug.Log("here3");
         EventManager.current.OnGameUnPause();
+    }
+
+    public void QuitToMain()
+    {
+        EventManager.current.OnGameRestart();
     }
 }
