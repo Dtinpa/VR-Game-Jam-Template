@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 286904258}
-  bubbleDistanceFromGround: 3
+  bubbleDistanceFromGround: 1
   rayCastDistance: 100
   tagList:
   - SafeBabyZone

@@ -6,17 +6,32 @@ using UnityEngine.XR;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> grindPoints;
-    private InputDevice headSet;
+    [SerializeField] private GameObject skateBoard;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float moveSpeed = 10f;
+
+    private Rigidbody rb;
+    private bool isGrinding = false;
+    private bool hasLanded = false;
+    
     private void Start()
     {
-        
+        EventManager.current.Jump += Jump;
+        EventManager.current.UpdateBoardPos += UpdateBoardToPlayer;
+
+        rb = this.gameObject.GetComponent<Rigidbody>();
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.current.Jump -= Jump;
+        EventManager.current.UpdateBoardPos -= UpdateBoardToPlayer;
     }
 
     // Start is called before the first frame update
     private void FixedUpdate()
     {
         //need to find a way to stop player movement when camera not on
-        //initializeHeadSet();
         //applies gravity to player at all times
         var vel = new Vector3(0, 0, 0);
         var controller = this.gameObject.GetComponent<CharacterController>();
@@ -24,20 +39,32 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //get the headset device being used so we can track if the player has it on or not
-    private void initializeHeadSet()
+    public void Jump(Vector3 valuePos, Quaternion valueRotate)
     {
-        if (headSet.name == "Null")
-        {
-            var headSets = new List<UnityEngine.XR.InputDevice>();
-            var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeadMounted | UnityEngine.XR.InputDeviceCharacteristics.TrackedDevice;
-            UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, headSets);
+        CharacterController controller = GetComponent<CharacterController>();
+        Vector3 moveDirection = valuePos;
 
-            foreach (var device in headSets)
-            {
-                Debug.Log(string.Format("Device name '{0}' has characteristics '{1}'", device.name, device.characteristics.ToString()));
-                headSet = device;
-            }
+        // is the controller on the ground?
+        if (controller.isGrounded)
+        {
+            //Feed moveDirection with input.
+            moveDirection = transform.TransformDirection(moveDirection);
+
+
+
+            //Multiply it by speed.
+            moveDirection *= moveSpeed;
+            moveDirection.y = jumpForce;
+
         }
+        //Applying gravity to the controller
+        moveDirection.y -= Physics.gravity.y * Time.deltaTime;
+        //Making the character move
+        controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void UpdateBoardToPlayer(Vector3 valuePos, Quaternion valueRotate)
+    {
+        skateBoard.transform.localPosition = new Vector3(valuePos.x, skateBoard.transform.localPosition.y, valuePos.z);
     }
 }

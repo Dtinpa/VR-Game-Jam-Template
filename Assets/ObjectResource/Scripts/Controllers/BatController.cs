@@ -18,8 +18,9 @@ public class BatController : MonoBehaviour
     {
         if (!isGrabbed)
         {
-            this.transform.position = batOrigTransform.transform.position;
-            this.transform.rotation = batOrigTransform.transform.rotation;
+            transform.position = batOrigTransform.transform.position;
+            transform.rotation = batOrigTransform.transform.rotation;
+            transform.Rotate(0, 0, -90);
         }
     }
 

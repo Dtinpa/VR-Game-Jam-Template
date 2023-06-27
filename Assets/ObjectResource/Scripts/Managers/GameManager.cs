@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         if (!gamePaused)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             gamePaused = true;
             EventManager.current.OnTogglePauseUI(true);
         }
@@ -77,16 +77,8 @@ public class GameManager : MonoBehaviour
 
     private void UnPauseGame()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         gamePaused = false;
         EventManager.current.OnTogglePauseUI(false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("return"))
-        {
-            EventManager.current.OnGamePause();
-        }
     }
 }
