@@ -62,10 +62,10 @@ public class EventManager : MonoBehaviour
     public void OnDropBaby() => DropBaby?.Invoke();
 
     public event Action<float> BalanceBaby;
-    public void OnBalanceBaby(float value) => BalanceBaby.Invoke(value);
+    public void OnBalanceBaby(float value) => BalanceBaby?.Invoke(value);
 
     public event Action ResetBalance;
-    public void OnResetBalance() => ResetBalance.Invoke();
+    public void OnResetBalance() => ResetBalance?.Invoke();
 
     #endregion
 
@@ -76,6 +76,16 @@ public class EventManager : MonoBehaviour
 
     public event Action BiteBaby;
     public void OnBiteBaby() => BiteBaby?.Invoke();
+
+    #endregion
+
+    #region Player
+
+    public event Action<Vector3, Quaternion> Jump;
+    public void OnJump(Vector3 valuePos, Quaternion valueRotate) => Jump?.Invoke(valuePos, valueRotate);
+
+    public event Action<Vector3, Quaternion> UpdateBoardPos;
+    public void OnUpdateBoardPos(Vector3 valuePos, Quaternion valueRotate) => UpdateBoardPos?.Invoke(valuePos, valueRotate);
 
     #endregion
 

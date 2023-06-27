@@ -36,6 +36,7 @@ public class BabyController : MonoBehaviour
     {
         babyRigidBody.isKinematic = false;
         babyDropped = true;
+        babyRigidBody.useGravity = true;
     }
 
     //if we hit a zone designated as safe for the baby to land, we stop all momentum of it
@@ -46,17 +47,21 @@ public class BabyController : MonoBehaviour
     {
         if (babyDropped && !babyBubbled)
         {
-            babyRigidBody.velocity = Vector3.zero;
-            babyRigidBody.angularVelocity = Vector3.zero;
-
             if (tagList.Contains(collision.gameObject.tag))
             {
-                
+                if (collision.gameObject.tag != "Player")
+                {
+                    babyRigidBody.velocity = Vector3.zero;
+                    babyRigidBody.angularVelocity = Vector3.zero;
+                }
             }
             else
             {
                 bubble.SetActive(true);
                 babyBubbled = true;
+
+                babyRigidBody.velocity = Vector3.zero;
+                babyRigidBody.angularVelocity = Vector3.zero;
 
                 RaycastHit hit;
                 Physics.Raycast(transform.position, Vector3.down, out hit, rayCastDistance);
@@ -64,7 +69,7 @@ public class BabyController : MonoBehaviour
                 Vector3 location = hit.point;
                 location += new Vector3(0, bubbleDistanceFromGround, 0);
 
-                transform.position = Vector3.MoveTowards(transform.position, location, rayCastDistance);
+                transform.position = Vector3.MoveTowards(transform.position, location, bubbleDistanceFromGround);
                 babyRigidBody.useGravity = false;
             }
         }

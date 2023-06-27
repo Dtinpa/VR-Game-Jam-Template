@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager current;
     [SerializeField] private Slider sliderUI;
+    [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private int defaultVal = 50;
 
     private void Awake()
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
     {
         EventManager.current.BalanceBaby += BalanceBaby;
         EventManager.current.ResetBalance += ResetBalance;
+        EventManager.current.TogglePauseUI += TogglePauseUI;
 
         sliderUI.gameObject.SetActive(false);
     }
@@ -26,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         EventManager.current.BalanceBaby -= BalanceBaby;
         EventManager.current.ResetBalance -= ResetBalance;
+        EventManager.current.TogglePauseUI -= TogglePauseUI;
     }
 
     private void BalanceBaby(float value)
@@ -48,5 +51,16 @@ public class UIManager : MonoBehaviour
     {
         sliderUI.value = defaultVal;
         sliderUI.gameObject.SetActive(false);
+    }
+
+    private void TogglePauseUI(bool setActive)
+    {
+        pauseMenuUI.SetActive(setActive);
+    }
+
+    public void UnPauseButton()
+    {
+        Debug.Log("here3");
+        EventManager.current.OnGameUnPause();
     }
 }
