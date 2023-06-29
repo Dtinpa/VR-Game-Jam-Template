@@ -212,10 +212,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1327881637}
-    - target: {fileID: 1563089446, guid: c20a682a99799cd4da8cdd8513402e06, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitToMain
-      objectReference: {fileID: 0}
     - target: {fileID: 3697211187842538377, guid: c20a682a99799cd4da8cdd8513402e06,
         type: 3}
       propertyPath: m_RootOrder
@@ -271,35 +267,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8021129281852994071, guid: c20a682a99799cd4da8cdd8513402e06,
         type: 3}
       propertyPath: m_Name
       value: Complete XR Origin Set Up 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9009688976565218470, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9009688976565218470, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20a682a99799cd4da8cdd8513402e06, type: 3}
@@ -700,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EventManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3459279327565957548, guid: 9fb585d16d0db8b4fbdb2782e5e6599b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3577249660281421832, guid: 9fb585d16d0db8b4fbdb2782e5e6599b,
         type: 3}

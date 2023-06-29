@@ -1665,7 +1665,7 @@ GameObject:
   - component: {fileID: 820525718}
   - component: {fileID: 820525717}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Rules 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1903,6 +1903,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4061207566007983217, guid: b593fc5a5bb6d2c4991945dd9d4b30e9,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1194202977}
     - target: {fileID: 8035669099970433418, guid: b593fc5a5bb6d2c4991945dd9d4b30e9,
         type: 3}
       propertyPath: m_Name
@@ -2389,7 +2394,7 @@ GameObject:
   - component: {fileID: 1162834714}
   - component: {fileID: 1162834713}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Rules 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2483,6 +2488,12 @@ RectTransform:
   m_AnchoredPosition: {x: -5.01, y: 1.852}
   m_SizeDelta: {x: 100, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1194202977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6980638057171758544, guid: c20a682a99799cd4da8cdd8513402e06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1779548403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1196664962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,8 +2839,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.08627451, g: 0.7411765, b: 0.8862745, a: 1}
+    m_PressedColor: {r: 0.101960786, g: 0.105882354, b: 0.8509804, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2915,7 +2926,7 @@ GameObject:
   - component: {fileID: 1444935182}
   - component: {fileID: 1444935183}
   m_Layer: 5
-  m_Name: Canvas (3)
+  m_Name: Start or Quit Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3883,7 +3894,7 @@ GameObject:
   - component: {fileID: 1646221804}
   - component: {fileID: 1646221803}
   m_Layer: 5
-  m_Name: Canvas (2)
+  m_Name: Baby Rules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4139,35 +4150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6386214201960245982, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8021129281852994071, guid: c20a682a99799cd4da8cdd8513402e06,
         type: 3}
       propertyPath: m_Name
       value: Complete XR Origin Set Up 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9009688976565218470, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9009688976565218470, guid: c20a682a99799cd4da8cdd8513402e06,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20a682a99799cd4da8cdd8513402e06, type: 3}
@@ -4706,7 +4692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Balance: Left Controller Trigger'
+  m_text: 'Balance: Right Controller Trigger (hold)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4845,8 +4831,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.08627451, g: 0.7411765, b: 0.8862745, a: 1}
+    m_PressedColor: {r: 0.101960786, g: 0.105882354, b: 0.8509804, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

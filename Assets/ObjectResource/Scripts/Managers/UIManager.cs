@@ -5,14 +5,25 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager current;
+    [SerializeField] public static UIManager current;
     [SerializeField] private Slider sliderUI;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private int defaultVal = 50;
 
     private void Awake()
     {
+        if (current is not null && current != this)
+        {
+            Destroy(current);
+            return;
+        }
+
         current = this;
+    }
+
+    private void OnDisable()
+    {
+        current = null;
     }
 
     private void Start()
@@ -20,8 +31,10 @@ public class UIManager : MonoBehaviour
         EventManager.current.BalanceBaby += BalanceBaby;
         EventManager.current.ResetBalance += ResetBalance;
         EventManager.current.TogglePauseUI += TogglePauseUI;
+        EventManager.current.InitiateBalanceUI += InitiateBalanceUI;
 
         sliderUI.gameObject.SetActive(false);
+        pauseMenuUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -29,21 +42,51 @@ public class UIManager : MonoBehaviour
         EventManager.current.BalanceBaby -= BalanceBaby;
         EventManager.current.ResetBalance -= ResetBalance;
         EventManager.current.TogglePauseUI -= TogglePauseUI;
+        EventManager.current.InitiateBalanceUI -= InitiateBalanceUI;
+
+        current = null;
     }
 
-    private void BalanceBaby(float value)
+    public void InitiateBalanceUI()
     {
-        //this means we've either just hit a manual or a grind
-        if(!sliderUI.gameObject.activeSelf)
-        {
-            sliderUI.gameObject.SetActive(true);
-        }
+        sliderUI.gameObject.SetActive(true);
+    }
 
-        sliderUI.value += value;
-        if(sliderUI.value == 100 || sliderUI.value == 0)
+    private void BalanceBaby(bool pressed)
+    {
+        //if the trigger is pressed and we need to balance, then increment the slider to go back towards the middle
+        if (pressed)
         {
-            EventManager.current.OnDropBaby();
-            EventManager.current.OnResetBalance();
+            if (sliderUI.value < 50)
+            {
+                sliderUI.value += 1f;
+            }
+            else
+            {
+                sliderUI.value -= 1f;
+            }
+
+            if (sliderUI.value == 100 || sliderUI.value == 0)
+            {
+                EventManager.current.OnDropBaby();
+                EventManager.current.OnResetBalance();
+            }
+        } else
+        {
+            if (sliderUI.value < 50)
+            {
+                sliderUI.value -= 1f;
+            }
+            else
+            {
+                sliderUI.value += 1f;
+            }
+
+            if (sliderUI.value == 100 || sliderUI.value == 0)
+            {
+                EventManager.current.OnDropBaby();
+                EventManager.current.OnResetBalance();
+            }
         }
     }
 
