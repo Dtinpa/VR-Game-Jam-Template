@@ -117,4 +117,14 @@ public class EventManager : MonoBehaviour
 
     #endregion
 
+    #region LeanTween Manager
+
+    public event Action<GameObject, GameObject> StartGrind;
+    public void OnStartGrind(GameObject player, GameObject grindObj) => StartGrind?.Invoke(player, grindObj);
+
+    public event Action<GameObject, GameObject> EndGrind;
+    public void OnEndGrind(GameObject player, GameObject grindObj) => EndGrind?.Invoke(player, grindObj);
+
+    #endregion
+
 }

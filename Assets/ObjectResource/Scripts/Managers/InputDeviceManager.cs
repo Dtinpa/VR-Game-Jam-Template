@@ -23,7 +23,7 @@ public class InputDeviceManager : MonoBehaviour
         _inputActionMapRightHand = inputActions.FindActionMap("XRI RightHand Interaction");
         _inputActionMapHead = inputActions.FindActionMap("XRI Head");
 
-        InputAction action = _inputActionMapRightHand.FindAction("PrimaryButton");
+        InputAction action = _inputActionMapLeftHand.FindAction("PrimaryButton");
         action.performed += Jump;
         action.Enable();
 
@@ -43,7 +43,7 @@ public class InputDeviceManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputAction action = _inputActionMapRightHand.FindAction("PrimaryButton");
+        InputAction action = _inputActionMapLeftHand.FindAction("PrimaryButton");
         action.performed -= Jump;
         action.Disable();
 
@@ -88,6 +88,8 @@ public class InputDeviceManager : MonoBehaviour
 
                 InputAction gripAction = _inputActionMapLeftHand.FindAction("Select");
                 gripAction.Enable();
+
+                gripDisabled = false;
             }
         }
     }

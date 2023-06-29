@@ -786,8 +786,8 @@
                 {
                     "name": "",
                     "id": "a6e08b20-3566-4f37-aae4-c06ac6823b7e",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "",
+                    "path": "<XRController>{LeftHand}/joystickClicked",
+                    "interactions": "Press(pressPoint=0.05)",
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "PrimaryButton",

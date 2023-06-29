@@ -91,7 +91,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
                 //reset the board
                 ResetBoardPos();
             }
-            else
+            else if(!isGrinding)
             {
                 isManualing = true;
                 if (!babyDropped)
@@ -118,7 +118,11 @@ namespace UnityEngine.XR.Interaction.Toolkit
             {
                 isGrinding = true;
                 ResetBoardPos();
-                EventManager.current.OnInitiateBalanceUI();
+
+                if (!babyDropped)
+                {
+                    EventManager.current.OnInitiateBalanceUI();
+                }
             }
 
             setMoveSpeed();

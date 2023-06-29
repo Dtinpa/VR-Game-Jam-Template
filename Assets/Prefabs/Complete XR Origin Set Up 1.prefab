@@ -3861,7 +3861,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -6079,6 +6079,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1783597783456295895, guid: a04e9c10dd82f194a957fd492ff2fae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: SkateBoard
+      objectReference: {fileID: 0}
     - target: {fileID: 1853818742659298454, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}
       propertyPath: m_Layer
@@ -6103,6 +6108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828484708336403775, guid: a04e9c10dd82f194a957fd492ff2fae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: SkateBoard
       objectReference: {fileID: 0}
     - target: {fileID: 3217768513655655516, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}
@@ -6164,6 +6174,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6474836043474816808, guid: a04e9c10dd82f194a957fd492ff2fae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: SkateBoard
+      objectReference: {fileID: 0}
     - target: {fileID: 6519871475365571884, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}
       propertyPath: m_Layer
@@ -6204,6 +6219,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7309741953538911222, guid: a04e9c10dd82f194a957fd492ff2fae0,
+        type: 3}
+      propertyPath: m_TagString
+      value: SkateBoard
+      objectReference: {fileID: 0}
     - target: {fileID: 7402572362990390957, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}
       propertyPath: m_Layer
@@ -6242,7 +6262,7 @@ PrefabInstance:
     - target: {fileID: 7824708443499418392, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.201
+      value: 0.154
       objectReference: {fileID: 0}
     - target: {fileID: 7824708443499418392, guid: a04e9c10dd82f194a957fd492ff2fae0,
         type: 3}

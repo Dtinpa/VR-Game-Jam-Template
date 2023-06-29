@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - DeliveryZone
   - SafeBabyZone
+  - SkateBoard
   layers:
   - Default
   - TransparentFX
