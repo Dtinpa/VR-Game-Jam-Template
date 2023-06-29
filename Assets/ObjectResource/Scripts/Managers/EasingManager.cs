@@ -51,11 +51,13 @@ public class EasingManager : MonoBehaviour
         if (dot1 < dot2)
         {
             Vector3 position = new Vector3(end1.position.x, player.transform.position.y, end1.position.z);
-            LeanTween.moveLocal(player, position, 3);
+            player.transform.position = position;
+            //LeanTween.move(player, position, 3);
         } else
         {
             Vector3 position = new Vector3(end2.position.x, player.transform.position.y, end2.position.z);
-            LeanTween.moveLocal(player, position, 3);
+            player.transform.position = position;
+            //LeanTween.move(player, position, 3);
         }
             
     }
