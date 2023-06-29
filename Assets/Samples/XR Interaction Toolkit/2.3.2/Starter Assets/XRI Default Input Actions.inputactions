@@ -786,8 +786,8 @@
                 {
                     "name": "",
                     "id": "a6e08b20-3566-4f37-aae4-c06ac6823b7e",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "",
+                    "path": "<XRController>{LeftHand}/joystickClicked",
+                    "interactions": "Press(pressPoint=0.05)",
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "PrimaryButton",
@@ -1373,6 +1373,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Manual",
+                    "type": "Button",
+                    "id": "399ea988-d80f-4002-9e4e-96a9f71e54cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Balance",
+                    "type": "Button",
+                    "id": "5f9be911-e318-4a2e-9e43-98e2534ac51d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1527,6 +1545,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47b43b6c-aecb-44d3-b863-2dd07ab71ff3",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Manual",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43492859-106e-45b3-beaa-f59ddfe77242",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Balance",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

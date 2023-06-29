@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BabyController : MonoBehaviour
 {
     [SerializeField] GameObject bubble;
@@ -15,8 +16,15 @@ public class BabyController : MonoBehaviour
 
     private void Start()
     {
+        EventManager.current.DropBaby += DropBaby;
+
         babyRigidBody = this.gameObject.GetComponent<Rigidbody>();
         bubble.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.current.DropBaby -= DropBaby;
     }
 
     //when the baby is picked up, only if its bubbled do we need to reset the flags and gravity
@@ -24,6 +32,8 @@ public class BabyController : MonoBehaviour
     {
         babyDropped = false;
         babyRigidBody.isKinematic = true;
+        EventManager.current.OnBabyPickedUp();
+
         if (bubble.activeSelf) 
         {
             bubble.SetActive(false);
@@ -37,6 +47,23 @@ public class BabyController : MonoBehaviour
         babyRigidBody.isKinematic = false;
         babyDropped = true;
         babyRigidBody.useGravity = true;
+        EventManager.current.OnResetBalance();
+        EventManager.current.OnDropBaby();
+    }
+
+    private void DropBaby()
+    {
+        //this is only called when the player fails to balance the baby
+        if(!babyDropped)
+        {
+            babyDropped = true;
+            babyRigidBody.isKinematic = false;
+            babyRigidBody.useGravity = true;
+
+            EventManager.current.OnDeactivateGrip();
+            EventManager.current.OnResetBalance();
+            EventManager.current.OnDropBaby();
+        }
     }
 
     //if we hit a zone designated as safe for the baby to land, we stop all momentum of it
