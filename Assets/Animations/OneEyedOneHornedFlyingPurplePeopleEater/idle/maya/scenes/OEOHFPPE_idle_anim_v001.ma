@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: OEOHFPPE_idle_anim_v001.ma
-//Last modified: Fri, Jun 30, 2023 07:38:00 PM
+//Last modified: Fri, Jun 30, 2023 07:39:10 PM
 //Codeset: 1252
 file -rdi 1 -ns "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001" -rfn "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN"
 		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v005.ma";
@@ -14,7 +14,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202202161415-df43006fd3";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22621)";
-fileInfo "UUID" "3AC52ABF-4B44-104B-B898-2E91595DD9F7";
+fileInfo "UUID" "3B4D0B55-4B0F-F73C-B3EA-21AE28D09A32";
 createNode transform -s -n "persp";
 	rename -uid "21EE396B-4FEB-D5CC-DCAE-32B5FF254371";
 	setAttr ".v" no;
