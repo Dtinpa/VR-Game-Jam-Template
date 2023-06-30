@@ -29,6 +29,7 @@ public class BatController : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             collision.rigidbody.AddForce(collision.transform.forward * knockBackForce * numHandsGrabbing);
+            EventManager.current.OnHitBat();
         }
     }
 

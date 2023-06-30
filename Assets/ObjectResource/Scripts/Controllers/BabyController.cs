@@ -14,12 +14,28 @@ public class BabyController : MonoBehaviour
     private bool babyDropped = false;
     private bool babyBubbled = false;
 
+    public bool BabyBubbled
+    {
+        get { return babyBubbled; }
+    }
+
     private void Start()
     {
         EventManager.current.DropBaby += DropBaby;
 
         babyRigidBody = this.gameObject.GetComponent<Rigidbody>();
         bubble.SetActive(false);
+    }
+
+    private void FixedUpdate()
+    {
+        if(transform.position.y < 0)
+        {
+            Vector3 reset = new Vector3(transform.position.x, 3f, transform.position.z);
+            transform.position = reset;
+
+            ResetVelocity();
+        }
     }
 
     private void OnDestroy()
@@ -78,8 +94,12 @@ public class BabyController : MonoBehaviour
             {
                 if (collision.gameObject.tag != "Player")
                 {
-                    babyRigidBody.velocity = Vector3.zero;
-                    babyRigidBody.angularVelocity = Vector3.zero;
+                    ResetVelocity();
+                }
+
+                if (collision.gameObject.tag == "DeliveryZone")
+                {
+                    EventManager.current.OnGameWon();
                 }
             }
             else
@@ -87,8 +107,7 @@ public class BabyController : MonoBehaviour
                 bubble.SetActive(true);
                 babyBubbled = true;
 
-                babyRigidBody.velocity = Vector3.zero;
-                babyRigidBody.angularVelocity = Vector3.zero;
+                ResetVelocity();
 
                 RaycastHit hit;
                 Physics.Raycast(transform.position, Vector3.down, out hit, rayCastDistance);
@@ -100,5 +119,11 @@ public class BabyController : MonoBehaviour
                 babyRigidBody.useGravity = false;
             }
         }
+    }
+
+    private void ResetVelocity()
+    {
+        babyRigidBody.velocity = Vector3.zero;
+        babyRigidBody.angularVelocity = Vector3.zero;
     }
 }

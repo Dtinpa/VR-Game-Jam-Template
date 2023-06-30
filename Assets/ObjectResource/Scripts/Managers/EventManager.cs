@@ -53,6 +53,9 @@ public class EventManager : MonoBehaviour
     public event Action InitializeEndUI;
     public void OnInitializeEndUI() => InitializeEndUI?.Invoke();
 
+    public event Action InitializeWonUI;
+    public void OnInitializeWonUI() => InitializeWonUI?.Invoke();
+
     #endregion
 
     #region Toggle Pause Menu UI
@@ -83,8 +86,8 @@ public class EventManager : MonoBehaviour
 
     #region Enemy behavior
 
-    public event Action PlayerSpotted;
-    public void OnPlayerSpotted() => PlayerSpotted?.Invoke();
+    public event Action HitBat;
+    public void OnHitBat() => HitBat?.Invoke();
 
     public event Action BiteBaby;
     public void OnBiteBaby() => BiteBaby?.Invoke();

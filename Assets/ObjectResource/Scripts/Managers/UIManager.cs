@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] public static UIManager current;
     [SerializeField] private Slider sliderUI;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject endMenuUI;
+    [SerializeField] private GameObject endMenuUIWon;
+    [SerializeField] private GameObject endMenuUILost;
     [SerializeField] private int defaultVal = 50;
 
     private void Awake()
@@ -32,6 +35,8 @@ public class UIManager : MonoBehaviour
         EventManager.current.ResetBalance += ResetBalance;
         EventManager.current.TogglePauseUI += TogglePauseUI;
         EventManager.current.InitiateBalanceUI += InitiateBalanceUI;
+        EventManager.current.InitializeEndUI += InitializeEndUI;
+        EventManager.current.InitializeWonUI += InitializeWonUI;
 
         sliderUI.gameObject.SetActive(false);
         pauseMenuUI.SetActive(false);
@@ -43,6 +48,8 @@ public class UIManager : MonoBehaviour
         EventManager.current.ResetBalance -= ResetBalance;
         EventManager.current.TogglePauseUI -= TogglePauseUI;
         EventManager.current.InitiateBalanceUI -= InitiateBalanceUI;
+        EventManager.current.InitializeEndUI -= InitializeEndUI;
+        EventManager.current.InitializeWonUI -= InitializeWonUI;
 
         current = null;
     }
@@ -109,5 +116,17 @@ public class UIManager : MonoBehaviour
     public void QuitToMain()
     {
         EventManager.current.OnGameRestart();
+    }
+
+    private void InitializeEndUI() 
+    {
+        endMenuUI.SetActive(true);
+        endMenuUILost.SetActive(true);
+    }
+
+    private void InitializeWonUI()
+    {
+        endMenuUI.SetActive(true);
+        endMenuUIWon.SetActive(true);
     }
 }

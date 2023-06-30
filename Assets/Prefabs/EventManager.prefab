@@ -74,6 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderUI: {fileID: 0}
   pauseMenuUI: {fileID: 0}
+  endMenuUI: {fileID: 0}
+  endMenuUIWon: {fileID: 0}
+  endMenuUILost: {fileID: 0}
   defaultVal: 50
 --- !u!114 &1327881631
 MonoBehaviour:

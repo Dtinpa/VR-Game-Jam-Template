@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EventManager.current.GameStarted += StartGame;
+        EventManager.current.GameEnded += EndGame;
 
         EventManager.current.GameWon += GameWon;
         EventManager.current.GameRestart += GameRestart;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.current.GameStarted -= StartGame;
+        EventManager.current.GameEnded -= EndGame;
 
         EventManager.current.GameWon -= GameWon;
         EventManager.current.GameRestart -= GameRestart;
@@ -68,14 +70,14 @@ public class GameManager : MonoBehaviour
     private void GameWon()
     {
         gameEnd = true;
-        EventManager.current.OnInitializeEndUI();
+        EventManager.current.OnInitializeWonUI();
     }
 
     private void PauseGame()
     {
         if (!gamePaused)
         {
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             gamePaused = true;
             EventManager.current.OnTogglePauseUI(true);
         }
@@ -83,8 +85,13 @@ public class GameManager : MonoBehaviour
 
     private void UnPauseGame()
     {
-        //Time.timeScale = 1;
+        Time.timeScale = 1;
         gamePaused = false;
         EventManager.current.OnTogglePauseUI(false);
+    }
+
+    private void EndGame()
+    {
+        EventManager.current.OnInitializeEndUI();
     }
 }
