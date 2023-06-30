@@ -1,11 +1,11 @@
 //Maya ASCII 2023 scene
 //Name: OEOHFPPE_idle_anim_v001.ma
-//Last modified: Thu, Jun 29, 2023 08:54:51 PM
+//Last modified: Fri, Jun 30, 2023 02:53:58 PM
 //Codeset: 1252
 file -rdi 1 -ns "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001" -rfn "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN"
-		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v002.ma";
+		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v003.ma";
 file -r -ns "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001" -dr 1 -rfn "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN"
-		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v002.ma";
+		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v003.ma";
 requires maya "2023";
 requires "mtoa" "5.1.0";
 currentUnit -l centimeter -a degree -t film;
@@ -14,17 +14,17 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202202161415-df43006fd3";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22621)";
-fileInfo "UUID" "11C28B05-4295-3646-A0C6-9BB8376E3248";
+fileInfo "UUID" "C7D60326-477F-368A-E737-9F9323AE4F50";
 createNode transform -s -n "persp";
 	rename -uid "21EE396B-4FEB-D5CC-DCAE-32B5FF254371";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 69.758942061072702 2.6887285544641646 24.152863845447037 ;
-	setAttr ".r" -type "double3" 3.8616472704292142 -292.20000000001085 0 ;
+	setAttr ".t" -type "double3" 99.693042221026047 21.882042470551685 95.762680975351515 ;
+	setAttr ".r" -type "double3" -3.3383527295468243 -1396.2000000001292 -2.754164885404982e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "D0D6CD81-4568-A3A4-791F-0C952F7EEA74";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 70.89818167103401;
+	setAttr ".coi" 143.28677495736866;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -80,19 +80,19 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "9EC5194E-4ACF-10D1-AC80-49BF43EEB9B1";
+	rename -uid "84533398-4493-4940-EB7C-49B1833259AF";
 	setAttr -s 34 ".lnk";
 	setAttr -s 34 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "0E459695-4D32-DDE1-F0C3-C89EDD20C298";
+	rename -uid "B9F687F5-4C95-2624-D319-A881F23B44DE";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "C2C589AA-4487-6407-C1C3-1E962CEB9248";
+	rename -uid "F80F23D7-43B3-3637-1511-71A48C1D83FE";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "56ED1242-4A0B-8339-D63C-D89BA2674BE9";
+	rename -uid "C17D71C4-4E31-0200-50E2-0EBC7191235B";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "FAC509AB-4174-0DF6-8EA6-5DB3326A600A";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "171636B2-4FC7-CE7C-8EBC-EAB295D3A923";
+	rename -uid "E521D26F-4906-46AA-E596-8A94FC3FEB5A";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "298B14C0-4488-97F9-3FAB-66B578D14215";
 	setAttr ".g" yes;
@@ -133,20 +133,22 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n"
 		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n"
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n"
+		+ "        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
 		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 2581\\n    -height 1627\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 0\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 2581\\n    -height 1627\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "ECD2C482-43E6-4FE2-E97B-329F02D271E3";
-	setAttr ".b" -type "string" "playbackOptions -min 10 -max 40 -ast 10 -aet 40 ";
+	setAttr ".b" -type "string" "playbackOptions -min 1 -max 31 -ast 1 -aet 31 ";
 	setAttr ".st" 6;
 createNode reference -n "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN";
 	rename -uid "D6B66801-427F-8809-2757-39B58DA0D179";
-	setAttr ".fn[0]" -type "string" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v001.ma";
-	setAttr -s 90 ".phl";
+	setAttr -s 2 ".fn";
+	setAttr ".fn[0]" -type "string" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v002.ma";
+	setAttr ".fn[1]" -type "string" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v001.ma";
+	setAttr -s 80 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -227,343 +229,306 @@ createNode reference -n "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN";
 	setAttr ".phl[78]" 0;
 	setAttr ".phl[79]" 0;
 	setAttr ".phl[80]" 0;
-	setAttr ".phl[81]" 0;
-	setAttr ".phl[82]" 0;
-	setAttr ".phl[83]" 0;
-	setAttr ".phl[84]" 0;
-	setAttr ".phl[85]" 0;
-	setAttr ".phl[86]" 0;
-	setAttr ".phl[87]" 0;
-	setAttr ".phl[88]" 0;
-	setAttr ".phl[89]" 0;
-	setAttr ".phl[90]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN"
 		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" 0
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" 92
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" 86
+		2 "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl" 
+		"visibility" " 1"
+		2 "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl" 
+		"translate" " -type \"double3\" 0 0 0"
+		2 "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl" 
+		"rotate" " -type \"double3\" 0 0 0"
+		2 "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl" 
+		"scale" " -type \"double3\" 1 1 1"
 		2 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:Skeleton" "visibility" 
 		" 0"
 		2 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:Controls" "visibility" 
-		" 0"
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[1]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[2]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[3]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[4]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[5]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[6]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[7]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[8]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[9]" ""
-		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[10]" ""
+		" 1"
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[11]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[1]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[12]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[2]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[13]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[3]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[14]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[4]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[15]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[5]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[16]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[6]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[17]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[7]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[18]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[8]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[19]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[9]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[20]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[10]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[21]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[11]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[22]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[12]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[23]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[13]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[24]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[14]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[25]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[15]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[26]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[16]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[27]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[17]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[28]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[18]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[29]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[19]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[30]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[20]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[31]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[21]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[32]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[22]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[33]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[23]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[34]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[24]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[35]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[25]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[36]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[26]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[37]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[27]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[38]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[28]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[39]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[29]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[40]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[30]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[41]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[31]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[42]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[32]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[43]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[33]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[44]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[34]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[45]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[35]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[46]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[36]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[47]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[37]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[48]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[38]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[49]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[39]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[50]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[40]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[51]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[41]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[52]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[42]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[53]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[43]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[54]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[44]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[55]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[45]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[56]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[46]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[57]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[47]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[58]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[48]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[59]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[49]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:jaw_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueBase_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueMiddle_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:tongueTip_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[60]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[50]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[61]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[51]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[62]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[52]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[63]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[53]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[64]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[54]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[65]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[55]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[66]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[56]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[67]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[57]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[68]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[58]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[69]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[59]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:L_shoulder_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[70]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[60]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[71]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[61]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[72]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[62]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[73]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[63]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[74]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[64]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[75]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[65]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[76]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[66]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[77]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[67]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[78]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[68]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[79]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[69]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:R_shoulder_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[80]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[70]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.translateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[81]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[71]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.translateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[82]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[72]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.translateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[83]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[73]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.rotateX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[84]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[74]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.rotateY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[85]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[75]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.rotateZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[86]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[76]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.visibility" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[87]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[77]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.scaleX" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[88]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[78]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.scaleY" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[89]" ""
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[79]" ""
 		5 4 "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN" "|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_Rig|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:OEOHFPPE_master_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:master_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:localMaster_Ctrl|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_O|OneEyedOneHornedFlyingPurplePeopleEater_rig_v001:look_Ctrl.scaleZ" 
-		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[90]" "";
+		"OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.placeHolderList[80]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
-createNode animCurveTA -n "master_Ctrl_rotateX";
-	rename -uid "9E880551-415B-E622-097F-3198AB25D682";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
-createNode animCurveTA -n "master_Ctrl_rotateY";
-	rename -uid "1952A225-4E96-880D-13C3-B6A684932C88";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
-createNode animCurveTA -n "master_Ctrl_rotateZ";
-	rename -uid "BB3CA2EC-4A89-1F01-155D-75A3CC5D5CDC";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
 createNode animCurveTA -n "localMaster_Ctrl_rotateX";
 	rename -uid "8B1D1F88-4771-01E5-DC1C-B494859077DF";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 0 20 0 22 0 25 0 35 0 37 0 40 0;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 0 11 0 13 0 16 0 26 0 28 0 31 0;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTA -n "localMaster_Ctrl_rotateY";
 	rename -uid "64DB4612-4DBA-8352-490D-639AD7C4D0C6";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 0 20 0 22 0 25 0 35 0 37 0 40 0;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 0 11 0 13 0 16 0 26 0 28 0 31 0;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTA -n "localMaster_Ctrl_rotateZ";
 	rename -uid "7F3B120F-46D5-E7F0-AAB0-50BE878272ED";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 0 20 0 22 0 25 0 35 0 37 0 40 0;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 0 11 0 13 0 16 0 26 0 28 0 31 0;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTA -n "L_shoulder_Ctrl_rotateX";
 	rename -uid "E63B605C-4A50-8011-14CE-47A45786FFC1";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 -18.926116437851821 15 -26.714641720918411
-		 20 19.161261503532778 22 -10.605085568358836 25 -18.926116437851821 30 -26.714641720918411
-		 35 19.161261503532778 37 -10.605085568358836 40 -18.926116437851821;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 0.29905813017407279 0.78113538699560459;
-	setAttr -s 10 ".kiy[7:9]"  0 -0.95423489496915148 -0.62436167978442358;
-	setAttr -s 10 ".kox[5:9]"  0.78113538699560459 1 1 0.29905813017407279 
+	setAttr -s 9 ".ktv[0:8]"  1 -18.926116437851821 6 -26.714641720918411
+		 11 19.161261503532778 13 -10.605085568358836 16 -18.926116437851821 21 -26.714641720918411
+		 26 19.161261503532778 28 -10.605085568358836 31 -18.926116437851821;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 0.29905813017407279 0.78113538699560459;
+	setAttr -s 9 ".kiy[6:8]"  0 -0.95423489496915148 -0.62436167978442358;
+	setAttr -s 9 ".kox[4:8]"  0.78113538699560459 1 1 0.29905813017407279 
 		0.78113538699560459;
-	setAttr -s 10 ".koy[5:9]"  -0.62436167978442358 0 0 -0.95423489496915137 
+	setAttr -s 9 ".koy[4:8]"  -0.62436167978442358 0 0 -0.95423489496915137 
 		-0.62436167978442358;
 createNode animCurveTA -n "L_shoulder_Ctrl_rotateY";
 	rename -uid "C5F09D09-4F5A-B105-8166-F9976D8D2896";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 -64.866204036918418 15 15.660213101160267
-		 20 50.798938839839785 22 7.244835257369231 25 -64.866204036918418 30 15.660213101160267
-		 35 50.798938839839785 37 7.244835257369231 40 -64.866204036918418;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 0.10265461134904368 1;
-	setAttr -s 10 ".kiy[7:9]"  0 -0.99471706066035526 0;
-	setAttr -s 10 ".kox[5:9]"  1 0.2021388844118254 1 0.10265461134904368 
+	setAttr -s 9 ".ktv[0:8]"  1 -64.866204036918418 6 15.660213101160267
+		 11 50.798938839839785 13 7.244835257369231 16 -64.866204036918418 21 15.660213101160267
+		 26 50.798938839839785 28 7.244835257369231 31 -64.866204036918418;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 0.10265461134904368 1;
+	setAttr -s 9 ".kiy[6:8]"  0 -0.99471706066035526 0;
+	setAttr -s 9 ".kox[4:8]"  1 0.20213888441182545 1 0.10265461134904368 
 		1;
-	setAttr -s 10 ".koy[5:9]"  0 0.97935686621820495 0 -0.99471706066035526 
+	setAttr -s 9 ".koy[4:8]"  0 0.97935686621820495 0 -0.99471706066035526 
 		0;
 createNode animCurveTA -n "L_shoulder_Ctrl_rotateZ";
 	rename -uid "0849942F-4096-31D3-DB7A-079B5C2D0F5D";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 10.770085764919603 15 38.49310475659869
-		 20 151.72347898586966 22 7.4728180021655177 25 10.770085764919603 30 38.49310475659869
-		 35 151.72347898586966 37 7.4728180021655177 40 10.770085764919603;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 0.65562308501594713;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0.7550883195985566;
-	setAttr -s 10 ".kox[5:9]"  0.65562308501594713 0.16699151963872153 
+	setAttr -s 9 ".ktv[0:8]"  1 10.770085764919603 6 38.49310475659869
+		 11 151.72347898586966 13 7.4728180021655177 16 10.770085764919603 21 38.49310475659869
+		 26 151.72347898586966 28 7.4728180021655177 31 10.770085764919603;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 0.65562308501594713;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0.7550883195985566;
+	setAttr -s 9 ".kox[4:8]"  0.65562308501594713 0.16699151963872158 
 		1 1 0.65562308501594713;
-	setAttr -s 10 ".koy[5:9]"  0.7550883195985566 0.98595833196375515 
+	setAttr -s 9 ".koy[4:8]"  0.7550883195985566 0.98595833196375515 
 		0 0 0.7550883195985566;
 createNode animCurveTA -n "R_shoulder_Ctrl_rotateX";
 	rename -uid "4D109DB3-4572-83AC-6B12-56899FB68FEC";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 -18.926116437851821 15 -26.714641720918411
-		 20 19.161261503532778 22 -10.605085568358836 25 -18.926116437851821 30 -26.714641720918411
-		 35 19.161261503532778 37 -10.605085568358836 40 -18.926116437851821;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 0.29905813017407279 0.78113538699560459;
-	setAttr -s 10 ".kiy[7:9]"  0 -0.95423489496915148 -0.62436167978442358;
-	setAttr -s 10 ".kox[5:9]"  0.78113538699560459 1 1 0.29905813017407279 
+	setAttr -s 9 ".ktv[0:8]"  1 -18.926116437851821 6 -26.714641720918411
+		 11 19.161261503532778 13 -10.605085568358836 16 -18.926116437851821 21 -26.714641720918411
+		 26 19.161261503532778 28 -10.605085568358836 31 -18.926116437851821;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 0.29905813017407279 0.78113538699560459;
+	setAttr -s 9 ".kiy[6:8]"  0 -0.95423489496915148 -0.62436167978442358;
+	setAttr -s 9 ".kox[4:8]"  0.78113538699560459 1 1 0.29905813017407279 
 		0.78113538699560459;
-	setAttr -s 10 ".koy[5:9]"  -0.62436167978442358 0 0 -0.95423489496915137 
+	setAttr -s 9 ".koy[4:8]"  -0.62436167978442358 0 0 -0.95423489496915137 
 		-0.62436167978442358;
 createNode animCurveTA -n "R_shoulder_Ctrl_rotateY";
 	rename -uid "2D241581-4054-8E65-96CA-928147C20CE5";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 -64.866204036918418 15 15.660213101160267
-		 20 50.798938839839785 22 7.244835257369231 25 -64.866204036918418 30 15.660213101160267
-		 35 50.798938839839785 37 7.244835257369231 40 -64.866204036918418;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 0.10265461134904368 1;
-	setAttr -s 10 ".kiy[7:9]"  0 -0.99471706066035526 0;
-	setAttr -s 10 ".kox[5:9]"  1 0.2021388844118254 1 0.10265461134904368 
+	setAttr -s 9 ".ktv[0:8]"  1 -64.866204036918418 6 15.660213101160267
+		 11 50.798938839839785 13 7.244835257369231 16 -64.866204036918418 21 15.660213101160267
+		 26 50.798938839839785 28 7.244835257369231 31 -64.866204036918418;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 0.10265461134904368 1;
+	setAttr -s 9 ".kiy[6:8]"  0 -0.99471706066035526 0;
+	setAttr -s 9 ".kox[4:8]"  1 0.20213888441182545 1 0.10265461134904368 
 		1;
-	setAttr -s 10 ".koy[5:9]"  0 0.97935686621820495 0 -0.99471706066035526 
+	setAttr -s 9 ".koy[4:8]"  0 0.97935686621820495 0 -0.99471706066035526 
 		0;
 createNode animCurveTA -n "R_shoulder_Ctrl_rotateZ";
 	rename -uid "E51E7FB4-43A7-2364-06FB-47A548918284";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 10.770085764919603 15 38.49310475659869
-		 20 151.72347898586966 22 7.4728180021655177 25 10.770085764919603 30 38.49310475659869
-		 35 151.72347898586966 37 7.4728180021655177 40 10.770085764919603;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 0.65562308501594713;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0.7550883195985566;
-	setAttr -s 10 ".kox[5:9]"  0.65562308501594713 0.16699151963872153 
+	setAttr -s 9 ".ktv[0:8]"  1 10.770085764919603 6 38.49310475659869
+		 11 151.72347898586966 13 7.4728180021655177 16 10.770085764919603 21 38.49310475659869
+		 26 151.72347898586966 28 7.4728180021655177 31 10.770085764919603;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 0.65562308501594713;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0.7550883195985566;
+	setAttr -s 9 ".kox[4:8]"  0.65562308501594713 0.16699151963872158 
 		1 1 0.65562308501594713;
-	setAttr -s 10 ".koy[5:9]"  0.7550883195985566 0.98595833196375515 
+	setAttr -s 9 ".koy[4:8]"  0.7550883195985566 0.98595833196375515 
 		0 0 0.7550883195985566;
 createNode animCurveTA -n "jaw_Ctrl_rotateX";
 	rename -uid "8531D585-4F94-3E70-C413-4A90F21F3660";
@@ -644,242 +609,228 @@ createNode animCurveTU -n "localMaster_Ctrl_visibility";
 	rename -uid "96FDB929-44DB-7595-F9CD-8ABBA146C9E9";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 1 10 1 20 1 22 1 25 1 35 1 37 1 40 1;
-	setAttr -s 8 ".kit[0:7]"  9 9 9 9 9 1 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 1 11 1 13 1 16 1 26 1 28 1 31 1;
+	setAttr -s 7 ".kit[0:6]"  9 9 9 9 1 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
 createNode animCurveTL -n "localMaster_Ctrl_translateX";
 	rename -uid "505AB9BE-42FB-6FC4-8F71-6EBAE67DCF94";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 0 20 0 22 0 25 0 35 0 37 0 40 0;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 0 11 0 13 0 16 0 26 0 28 0 31 0;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTL -n "localMaster_Ctrl_translateY";
 	rename -uid "7761026F-47D4-CEBC-AA56-1BB10AC4D9D4";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 -6.4257337542322475 20 3.529215330242339
-		 22 0.025073252507290533 25 -6.4257337542322475 35 3.529215330242339 37 0.025073252507290533
-		 40 -6.4257337542322475;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 0.020923032874212329 1;
-	setAttr -s 8 ".kiy[5:7]"  0 -0.99978108938674404 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 0.020923032874212332 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 -0.99978108938674415 0;
+	setAttr -s 7 ".ktv[0:6]"  1 -6.4257337542322475 11 3.529215330242339
+		 13 0.025073252507290533 16 -6.4257337542322475 26 3.529215330242339 28 0.025073252507290533
+		 31 -6.4257337542322475;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 0.020923032874212329 1;
+	setAttr -s 7 ".kiy[4:6]"  0 -0.99978108938674404 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 0.020923032874212332 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 -0.99978108938674415 0;
 createNode animCurveTL -n "localMaster_Ctrl_translateZ";
 	rename -uid "AAD660EA-4A71-B79A-7282-E1A1640DCD2F";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 0 10 0 20 0 22 0 25 0 35 0 37 0 40 0;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 0 11 0 13 0 16 0 26 0 28 0 31 0;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTU -n "localMaster_Ctrl_scaleX";
 	rename -uid "43375FEE-4C57-E032-7B51-78B60915CCC8";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 1 10 1 20 1 22 1 25 1 35 1 37 1 40 1;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 1 11 1 13 1 16 1 26 1 28 1 31 1;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTU -n "localMaster_Ctrl_scaleY";
 	rename -uid "137263FD-4229-8FA6-004D-ED975A803E4D";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 1 10 1 20 1 22 1 25 1 35 1 37 1 40 1;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 1 11 1 13 1 16 1 26 1 28 1 31 1;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTU -n "localMaster_Ctrl_scaleZ";
 	rename -uid "AA138AFD-4364-9646-BD97-9CBAD1A029CA";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  1 1 10 1 20 1 22 1 25 1 35 1 37 1 40 1;
-	setAttr -s 8 ".kit[5:7]"  1 1 1;
-	setAttr -s 8 ".kot[4:7]"  1 18 1 1;
-	setAttr -s 8 ".kix[5:7]"  1 1 1;
-	setAttr -s 8 ".kiy[5:7]"  0 0 0;
-	setAttr -s 8 ".kox[4:7]"  1 1 1 1;
-	setAttr -s 8 ".koy[4:7]"  0 0 0 0;
+	setAttr -s 7 ".ktv[0:6]"  1 1 11 1 13 1 16 1 26 1 28 1 31 1;
+	setAttr -s 7 ".kit[4:6]"  1 1 1;
+	setAttr -s 7 ".kot[3:6]"  1 18 1 1;
+	setAttr -s 7 ".kix[4:6]"  1 1 1;
+	setAttr -s 7 ".kiy[4:6]"  0 0 0;
+	setAttr -s 7 ".kox[3:6]"  1 1 1 1;
+	setAttr -s 7 ".koy[3:6]"  0 0 0 0;
 createNode animCurveTU -n "R_shoulder_Ctrl_visibility";
 	rename -uid "98713B65-435A-EC8D-AE28-C4A417A7B2C9";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[0:9]"  9 9 9 9 9 9 9 1 
-		1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[0:8]"  9 9 9 9 9 9 1 1 
+		1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
 createNode animCurveTL -n "R_shoulder_Ctrl_translateX";
 	rename -uid "3FC558BD-47F7-E401-8A08-818413DC40FD";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTL -n "R_shoulder_Ctrl_translateY";
 	rename -uid "913361B7-47D1-7477-13E1-9380EA07F30A";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTL -n "R_shoulder_Ctrl_translateZ";
 	rename -uid "688EB28F-4074-648C-F445-A6A7A04371F7";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "R_shoulder_Ctrl_scaleX";
 	rename -uid "AA3F0A21-4D17-D453-7AC3-32B68B0F091A";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "R_shoulder_Ctrl_scaleY";
 	rename -uid "6174948C-483B-2613-BB21-E09559F870B1";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "R_shoulder_Ctrl_scaleZ";
 	rename -uid "7B4D246C-4BDA-111B-1E21-ACBC0B6DD57A";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "L_shoulder_Ctrl_visibility";
 	rename -uid "33866138-4F49-1A0D-7D64-EA8750CA8274";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[0:9]"  9 9 9 9 9 9 9 1 
-		1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[0:8]"  9 9 9 9 9 9 1 1 
+		1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
 createNode animCurveTL -n "L_shoulder_Ctrl_translateX";
 	rename -uid "35B9FD08-4220-7CA3-2DA2-D4AA3B335DC9";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTL -n "L_shoulder_Ctrl_translateY";
 	rename -uid "A02049A4-4BDB-0B3C-B289-BDBFF26DBD72";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTL -n "L_shoulder_Ctrl_translateZ";
 	rename -uid "817C868C-4F05-9478-D87B-D698FD54EFBF";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 0 10 0 15 0 20 0 22 0 25 0 30 0 35 0 37 0
-		 40 0;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 0 6 0 11 0 13 0 16 0 21 0 26 0 28 0 31 0;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "L_shoulder_Ctrl_scaleX";
 	rename -uid "2FB2E953-4159-4D80-3879-85AF37C7019D";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "L_shoulder_Ctrl_scaleY";
 	rename -uid "36ECB0D5-4FA7-477C-3BC3-6388582853B7";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "L_shoulder_Ctrl_scaleZ";
 	rename -uid "51CB804C-435D-F326-FEEE-90B38FE08431";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  1 1 10 1 15 1 20 1 22 1 25 1 30 1 35 1 37 1
-		 40 1;
-	setAttr -s 10 ".kit[7:9]"  1 1 1;
-	setAttr -s 10 ".kot[5:9]"  1 18 18 1 1;
-	setAttr -s 10 ".kix[7:9]"  1 1 1;
-	setAttr -s 10 ".kiy[7:9]"  0 0 0;
-	setAttr -s 10 ".kox[5:9]"  1 1 1 1 1;
-	setAttr -s 10 ".koy[5:9]"  0 0 0 0 0;
+	setAttr -s 9 ".ktv[0:8]"  1 1 6 1 11 1 13 1 16 1 21 1 26 1 28 1 31 1;
+	setAttr -s 9 ".kit[6:8]"  1 1 1;
+	setAttr -s 9 ".kot[4:8]"  1 18 18 1 1;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".koy[4:8]"  0 0 0 0 0;
 createNode animCurveTU -n "look_Ctrl_visibility";
 	rename -uid "FC7BC0C5-4908-054C-0422-BEB113425194";
 	setAttr ".tan" 9;
@@ -913,42 +864,6 @@ createNode animCurveTU -n "look_Ctrl_scaleY";
 	setAttr ".ktv[0]"  1 1;
 createNode animCurveTU -n "look_Ctrl_scaleZ";
 	rename -uid "4F645F10-4BC1-83CB-3D30-4E89488C8AB6";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 1;
-createNode animCurveTU -n "master_Ctrl_visibility";
-	rename -uid "5ADDD492-4CAE-95A1-5D18-CDBB503C3133";
-	setAttr ".tan" 9;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 1;
-	setAttr ".kot[0]"  5;
-createNode animCurveTL -n "master_Ctrl_translateX";
-	rename -uid "18057B77-427B-1DD9-3125-F9B5ABFB4ED3";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
-createNode animCurveTL -n "master_Ctrl_translateY";
-	rename -uid "18B8CB01-4BE3-16D3-B195-EA992D359F31";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
-createNode animCurveTL -n "master_Ctrl_translateZ";
-	rename -uid "48086B16-4E4B-0C11-7A26-28B8AABAA585";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 0;
-createNode animCurveTU -n "master_Ctrl_scaleX";
-	rename -uid "C365F123-45B4-F5B2-11EC-EE8A79644489";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 1;
-createNode animCurveTU -n "master_Ctrl_scaleY";
-	rename -uid "8D950C01-4A1B-9161-2D04-1484AAF60D85";
-	setAttr ".tan" 18;
-	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  1 1;
-createNode animCurveTU -n "master_Ctrl_scaleZ";
-	rename -uid "836A4004-42BE-A211-D82B-5B82BE754D24";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  1 1;
@@ -1101,8 +1016,8 @@ createNode reference -n "sharedReferenceNode";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"sharedReferenceNode";
 select -ne :time1;
-	setAttr ".o" 10;
-	setAttr ".unw" 10;
+	setAttr ".o" 17;
+	setAttr ".unw" 17;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
@@ -1139,185 +1054,165 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-connectAttr "master_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[1]"
+connectAttr "localMaster_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[1]"
 		;
-connectAttr "master_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[2]"
+connectAttr "localMaster_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[2]"
 		;
-connectAttr "master_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[3]"
+connectAttr "localMaster_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[3]"
 		;
-connectAttr "master_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[4]"
+connectAttr "localMaster_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[4]"
 		;
-connectAttr "master_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[5]"
+connectAttr "localMaster_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[5]"
 		;
-connectAttr "master_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[6]"
+connectAttr "localMaster_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[6]"
 		;
-connectAttr "master_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[7]"
+connectAttr "localMaster_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[7]"
 		;
-connectAttr "master_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[8]"
+connectAttr "localMaster_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[8]"
 		;
-connectAttr "master_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[9]"
+connectAttr "localMaster_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[9]"
 		;
-connectAttr "master_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[10]"
+connectAttr "localMaster_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[10]"
 		;
-connectAttr "localMaster_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[11]"
+connectAttr "jaw_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[11]"
 		;
-connectAttr "localMaster_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[12]"
+connectAttr "jaw_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[12]"
 		;
-connectAttr "localMaster_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[13]"
+connectAttr "jaw_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[13]"
 		;
-connectAttr "localMaster_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[14]"
+connectAttr "jaw_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[14]"
 		;
-connectAttr "localMaster_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[15]"
+connectAttr "jaw_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[15]"
 		;
-connectAttr "localMaster_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[16]"
+connectAttr "jaw_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[16]"
 		;
-connectAttr "localMaster_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[17]"
+connectAttr "jaw_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[17]"
 		;
-connectAttr "localMaster_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[18]"
+connectAttr "jaw_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[18]"
 		;
-connectAttr "localMaster_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[19]"
+connectAttr "jaw_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[19]"
 		;
-connectAttr "localMaster_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[20]"
+connectAttr "jaw_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[20]"
 		;
-connectAttr "jaw_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[21]"
+connectAttr "tongueBase_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[21]"
 		;
-connectAttr "jaw_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[22]"
+connectAttr "tongueBase_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[22]"
 		;
-connectAttr "jaw_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[23]"
+connectAttr "tongueBase_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[23]"
 		;
-connectAttr "jaw_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[24]"
+connectAttr "tongueBase_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[24]"
 		;
-connectAttr "jaw_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[25]"
+connectAttr "tongueBase_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[25]"
 		;
-connectAttr "jaw_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[26]"
+connectAttr "tongueBase_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[26]"
 		;
-connectAttr "jaw_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[27]"
+connectAttr "tongueBase_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[27]"
 		;
-connectAttr "jaw_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[28]"
+connectAttr "tongueBase_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[28]"
 		;
-connectAttr "jaw_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[29]"
+connectAttr "tongueBase_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[29]"
 		;
-connectAttr "jaw_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[30]"
+connectAttr "tongueBase_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[30]"
 		;
-connectAttr "tongueBase_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[31]"
+connectAttr "tongueMiddle_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[31]"
 		;
-connectAttr "tongueBase_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[32]"
+connectAttr "tongueMiddle_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[32]"
 		;
-connectAttr "tongueBase_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[33]"
+connectAttr "tongueMiddle_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[33]"
 		;
-connectAttr "tongueBase_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[34]"
+connectAttr "tongueMiddle_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[34]"
 		;
-connectAttr "tongueBase_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[35]"
+connectAttr "tongueMiddle_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[35]"
 		;
-connectAttr "tongueBase_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[36]"
+connectAttr "tongueMiddle_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[36]"
 		;
-connectAttr "tongueBase_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[37]"
+connectAttr "tongueMiddle_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[37]"
 		;
-connectAttr "tongueBase_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[38]"
+connectAttr "tongueMiddle_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[38]"
 		;
-connectAttr "tongueBase_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[39]"
+connectAttr "tongueMiddle_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[39]"
 		;
-connectAttr "tongueBase_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[40]"
+connectAttr "tongueMiddle_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[40]"
 		;
-connectAttr "tongueMiddle_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[41]"
+connectAttr "tongueTip_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[41]"
 		;
-connectAttr "tongueMiddle_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[42]"
+connectAttr "tongueTip_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[42]"
 		;
-connectAttr "tongueMiddle_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[43]"
+connectAttr "tongueTip_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[43]"
 		;
-connectAttr "tongueMiddle_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[44]"
+connectAttr "tongueTip_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[44]"
 		;
-connectAttr "tongueMiddle_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[45]"
+connectAttr "tongueTip_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[45]"
 		;
-connectAttr "tongueMiddle_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[46]"
+connectAttr "tongueTip_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[46]"
 		;
-connectAttr "tongueMiddle_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[47]"
+connectAttr "tongueTip_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[47]"
 		;
-connectAttr "tongueMiddle_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[48]"
+connectAttr "tongueTip_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[48]"
 		;
-connectAttr "tongueMiddle_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[49]"
+connectAttr "tongueTip_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[49]"
 		;
-connectAttr "tongueMiddle_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[50]"
+connectAttr "tongueTip_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[50]"
 		;
-connectAttr "tongueTip_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[51]"
+connectAttr "L_shoulder_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[51]"
 		;
-connectAttr "tongueTip_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[52]"
+connectAttr "L_shoulder_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[52]"
 		;
-connectAttr "tongueTip_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[53]"
+connectAttr "L_shoulder_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[53]"
 		;
-connectAttr "tongueTip_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[54]"
+connectAttr "L_shoulder_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[54]"
 		;
-connectAttr "tongueTip_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[55]"
+connectAttr "L_shoulder_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[55]"
 		;
-connectAttr "tongueTip_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[56]"
+connectAttr "L_shoulder_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[56]"
 		;
-connectAttr "tongueTip_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[57]"
+connectAttr "L_shoulder_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[57]"
 		;
-connectAttr "tongueTip_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[58]"
+connectAttr "L_shoulder_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[58]"
 		;
-connectAttr "tongueTip_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[59]"
+connectAttr "L_shoulder_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[59]"
 		;
-connectAttr "tongueTip_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[60]"
+connectAttr "L_shoulder_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[60]"
 		;
-connectAttr "L_shoulder_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[61]"
+connectAttr "R_shoulder_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[61]"
 		;
-connectAttr "L_shoulder_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[62]"
+connectAttr "R_shoulder_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[62]"
 		;
-connectAttr "L_shoulder_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[63]"
+connectAttr "R_shoulder_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[63]"
 		;
-connectAttr "L_shoulder_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[64]"
+connectAttr "R_shoulder_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[64]"
 		;
-connectAttr "L_shoulder_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[65]"
+connectAttr "R_shoulder_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[65]"
 		;
-connectAttr "L_shoulder_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[66]"
+connectAttr "R_shoulder_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[66]"
 		;
-connectAttr "L_shoulder_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[67]"
+connectAttr "R_shoulder_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[67]"
 		;
-connectAttr "L_shoulder_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[68]"
+connectAttr "R_shoulder_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[68]"
 		;
-connectAttr "L_shoulder_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[69]"
+connectAttr "R_shoulder_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[69]"
 		;
-connectAttr "L_shoulder_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[70]"
+connectAttr "R_shoulder_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[70]"
 		;
-connectAttr "R_shoulder_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[71]"
+connectAttr "look_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[71]"
 		;
-connectAttr "R_shoulder_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[72]"
+connectAttr "look_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[72]"
 		;
-connectAttr "R_shoulder_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[73]"
+connectAttr "look_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[73]"
 		;
-connectAttr "R_shoulder_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[74]"
+connectAttr "look_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[74]"
 		;
-connectAttr "R_shoulder_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[75]"
+connectAttr "look_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[75]"
 		;
-connectAttr "R_shoulder_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[76]"
+connectAttr "look_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[76]"
 		;
-connectAttr "R_shoulder_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[77]"
+connectAttr "look_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[77]"
 		;
-connectAttr "R_shoulder_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[78]"
+connectAttr "look_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[78]"
 		;
-connectAttr "R_shoulder_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[79]"
+connectAttr "look_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[79]"
 		;
-connectAttr "R_shoulder_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[80]"
-		;
-connectAttr "look_Ctrl_translateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[81]"
-		;
-connectAttr "look_Ctrl_translateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[82]"
-		;
-connectAttr "look_Ctrl_translateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[83]"
-		;
-connectAttr "look_Ctrl_rotateX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[84]"
-		;
-connectAttr "look_Ctrl_rotateY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[85]"
-		;
-connectAttr "look_Ctrl_rotateZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[86]"
-		;
-connectAttr "look_Ctrl_visibility.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[87]"
-		;
-connectAttr "look_Ctrl_scaleX.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[88]"
-		;
-connectAttr "look_Ctrl_scaleY.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[89]"
-		;
-connectAttr "look_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[90]"
+connectAttr "look_Ctrl_scaleZ.o" "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN.phl[80]"
 		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
