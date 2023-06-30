@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager current;
+    [SerializeField] public static GameManager current;
     public bool gamePaused { get; private set; } = false;
     public bool gameEnd { get; private set; } = false;
 
@@ -14,13 +14,23 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (current is not null && current != this)
+        {
+            Destroy(current);
+            return;
+        }
+
         current = this;
+    }
+
+    private void OnDisable()
+    {
+        current = null;
     }
 
     private void Start()
     {
         EventManager.current.GameStarted += StartGame;
-        EventManager.current.GameEnded += EndGame;
 
         EventManager.current.GameWon += GameWon;
         EventManager.current.GameRestart += GameRestart;
@@ -35,13 +45,14 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.current.GameStarted -= StartGame;
-        EventManager.current.GameEnded -= EndGame;
 
         EventManager.current.GameWon -= GameWon;
         EventManager.current.GameRestart -= GameRestart;
 
         EventManager.current.GamePause -= PauseGame;
         EventManager.current.GameUnPause -= UnPauseGame;
+
+        current = null;
     }
 
     private void StartGame()
@@ -49,14 +60,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("New Game has started");
     }
 
-    private void EndGame()
-    {
-        SceneManager.LoadScene(0);
-    }
-
     private void GameRestart()
     {
-        SceneManager.LoadScene(sceneToLoadOnRestart);
+        SceneManager.LoadScene(sceneToLoadOnRestart, LoadSceneMode.Single);
     }
 
     private void GameWon()

@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager current;
+    [SerializeField] public static EventManager current;
 
     private void Awake()
     {
+        if (current is not null && current != this)
+        {
+            Destroy(current);
+            return;
+        }
+
         current = this;
     }
 
@@ -61,11 +67,17 @@ public class EventManager : MonoBehaviour
     public event Action DropBaby;
     public void OnDropBaby() => DropBaby?.Invoke();
 
-    public event Action<float> BalanceBaby;
-    public void OnBalanceBaby(float value) => BalanceBaby?.Invoke(value);
+    public event Action BabyPickedUp;
+    public void OnBabyPickedUp() => BabyPickedUp?.Invoke();
+
+    public event Action<bool> BalanceBaby;
+    public void OnBalanceBaby(bool pressed) => BalanceBaby?.Invoke(pressed);
 
     public event Action ResetBalance;
     public void OnResetBalance() => ResetBalance?.Invoke();
+
+    public event Action InitiateBalanceUI;
+    public void OnInitiateBalanceUI() => InitiateBalanceUI?.Invoke();
 
     #endregion
 
@@ -86,6 +98,32 @@ public class EventManager : MonoBehaviour
 
     public event Action<Vector3, Quaternion> UpdateBoardPos;
     public void OnUpdateBoardPos(Vector3 valuePos, Quaternion valueRotate) => UpdateBoardPos?.Invoke(valuePos, valueRotate);
+
+    public event Action ToggleManual;
+    public void OnToggleManual() => ToggleManual?.Invoke();
+
+    public event Action ToggleGrind;
+    public void OnToggleGrind() => ToggleGrind?.Invoke();
+
+    public event Action<bool> CheckBalance;
+    public void OnCheckBalance(bool isBalancing) => CheckBalance?.Invoke(isBalancing);
+
+    #endregion
+
+    #region Input Manager
+
+    public event Action DeactivateGrip;
+    public void OnDeactivateGrip() => DeactivateGrip?.Invoke();
+
+    #endregion
+
+    #region LeanTween Manager
+
+    public event Action<GameObject, GameObject> StartGrind;
+    public void OnStartGrind(GameObject player, GameObject grindObj) => StartGrind?.Invoke(player, grindObj);
+
+    public event Action<GameObject, GameObject> EndGrind;
+    public void OnEndGrind(GameObject player, GameObject grindObj) => EndGrind?.Invoke(player, grindObj);
 
     #endregion
 

@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
         Debug.Log("Start button was clicked");
     }
 
