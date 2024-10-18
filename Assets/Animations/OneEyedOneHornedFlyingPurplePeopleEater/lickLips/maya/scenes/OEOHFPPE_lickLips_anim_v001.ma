@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: OEOHFPPE_lickLips_anim_v001.ma
-//Last modified: Fri, Jun 30, 2023 07:52:24 PM
+//Last modified: Fri, Jun 30, 2023 10:44:10 PM
 //Codeset: 1252
 file -rdi 1 -ns "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001" -rfn "OneEyedOneHornedFlyingPurplePeopleEater_rig_v001RN"
 		 -op "v=0;" -typ "mayaAscii" "C:/Users/chezm/Documents/Unity/VR-Game-Jam-Template/Assets/Rigs/OneEyedOneHornedFlyingPurplePeopleEater/exports/OneEyedOneHornedFlyingPurplePeopleEater_rig_v005.ma";
@@ -14,7 +14,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202202161415-df43006fd3";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22621)";
-fileInfo "UUID" "E7F87BEE-45D4-82B1-7124-C79878C3AFE0";
+fileInfo "UUID" "06F512CE-48DB-401C-FE60-F1B0BAB66027";
 createNode transform -s -n "persp";
 	rename -uid "21EE396B-4FEB-D5CC-DCAE-32B5FF254371";
 	setAttr ".v" no;
@@ -1589,8 +1589,8 @@ createNode animCurveTU -n "look_Ctrl_Blink";
 	setAttr -s 16 ".ktv[0:15]"  14 0 16 1 18 0 20 1 22 0 44 0 46 1 48 0
 		 50 1 52 0 74 0 76 1 78 0 80 1 82 0 91 0;
 select -ne :time1;
-	setAttr ".o" 69;
-	setAttr ".unw" 69;
+	setAttr ".o" 91;
+	setAttr ".unw" 91;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
